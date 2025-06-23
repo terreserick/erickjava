@@ -1,7 +1,21 @@
 package conta_banca;
 import javax.swing.*;
+import java.util.ArrayList;
 public class Conta_banca {
-
+    public static ArrayList<Conta> listaConta = new ArrayList<>();
+    
+    public static int listaConta(int numero){
+    int i = 0;
+    boolean found = false;
+    while(!found && i<listaConta.size()){
+        found = (numero==listaConta.get(i).getNumero());
+        i++;
+    }
+    if(!found) {
+        i = -1;
+    }
+    return i;
+    }
     public static void main(String[] args) {
         int opp = 0;
         Conta conta_beta = new Conta();
@@ -11,16 +25,15 @@ public class Conta_banca {
         switch(opp) {
             case 1:
                 int agencia = Integer.parseInt(JOptionPane.
-                showInputDialog("Digite o Id da agencia: "));; 
+                showInputDialog("Digite o Id da agencia: "));
                 int numero = Integer.parseInt(JOptionPane.
-                showInputDialog("Digite o N° da conta"));; 
+                showInputDialog("Digite o N° da conta"));
                 String cpf = JOptionPane.
                 showInputDialog("Digite seu CPF");
                 int tipoConta = Integer.parseInt(JOptionPane.
-                showInputDialog("Digite o N° de uso da conta"));; ;
-                
+                showInputDialog("Digite o N° de uso da conta"));
                 conta_beta = new Conta(agencia , numero);
-                
+                listaConta.add(conta_beta);
                 break;
             case 2:
                 double valor = Double.parseDouble
@@ -38,15 +51,15 @@ public class Conta_banca {
                break;
                 
             case 4:
-                JOptionPane.showMessageDialog(null, "Saldo = " + conta_beta.getSaldo());
+                conta_beta.gerarExtrato();
                 break;
                 
             case 5:
+                JOptionPane.showMessageDialog(null , "Volte sempre");
                 break;
             default:
                 throw new AssertionError();
-        }
+         }
         }
     }
-    
-}
+        }

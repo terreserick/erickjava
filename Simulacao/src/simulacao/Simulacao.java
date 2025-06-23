@@ -1,20 +1,20 @@
-
 package simulacao;
-
-/**
- *
- * @author User
- */
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 public class Simulacao {
-    /**
-     * @param args the command line arguments
-     */
+    public static void Listagem(List<Veiculo> listaVeiculos){
+        for(Veiculo carro : listaVeiculos)
+            System.out.println(carro);
+    
+    }
     public static void main(String[] args) {        
         //Simulação do robo veiculo
+        List<Veiculo> listaVeiculos = new ArrayList<> ();
         String placa = JOptionPane.
                 showInputDialog("Digite a placa: ");
         Veiculo corsa = new Veiculo(placa);
+        listaVeiculos.add(corsa);
         //Pedir para o usuario ano, modelo, marca
         int ano = Integer.parseInt(
                 JOptionPane.showInputDialog("Digite o ano: "));
@@ -31,7 +31,7 @@ public class Simulacao {
                         showInputDialog("Digite o nome do motorista");
                 String CPF = JOptionPane.
                         showInputDialog("Digite o seu CPF");
-                corsa.setCpf(CPF);
+                corsa.setCPF(CPF);
                 
                 String CNH = JOptionPane.
                         showInputDialog("Digite sua CNH");
@@ -43,8 +43,11 @@ public class Simulacao {
                         showInputDialog("Digite o seu E-mail");
                 
                 Pessoa Mutora = new Pessoa(CNH);
+                Mutora.getNome();
+                Mutora.getCPF();
+                Mutora.getFone();
+                Mutora.getEmail();
         
-              
         //Chamar os métodos
         corsa.ligar();
         int marcha = 1;
@@ -60,8 +63,7 @@ public class Simulacao {
         }  
         corsa.setMarcha(1);
         corsa.desligar();
-        
-        
+        Listagem(listaVeiculos);
     }
     
 }

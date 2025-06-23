@@ -1,10 +1,7 @@
 
 package simulacao;
 
-/**
- *
- * @author Alexandra
- */
+
 public class Veiculo {
    //Variáveis - Atributos
    private String placa;

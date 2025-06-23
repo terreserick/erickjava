@@ -1,5 +1,7 @@
 package conta_banca;
 
+import java.util.ArrayList;
+
 
 public class Conta {
     private int agencia;
@@ -8,19 +10,19 @@ public class Conta {
     private double saldo;
     private int tipoConta;
     private double limite;
-    
+    ArrayList<String> movimentacoes = new ArrayList<>();
     public Conta(int agencia ,int numero){
         this.agencia = agencia;
         this.numero = numero;        
         this.saldo = 0;
         this.limite = 0;
+        
     
     }
     public  Conta(){
         this.saldo = 0;
         this.limite = 0;
     }
-    
     
     
     /**
@@ -108,66 +110,23 @@ public class Conta {
     }
     public double depositar(double valor) {
         this.saldo = this.saldo + valor;
+        movimentacoes.add("Deposito de " + valor);
                 return this.saldo;
     }
     public boolean sacar(double valor) {
         if(this.saldo - valor >= 0) {
             this.saldo = this.saldo - valor;
+            movimentacoes.add("Saque de " + valor);
             return true;
         }else{
-            return false;} 
+            return false;
+        }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  
-}
-
-
+   public void gerarExtrato(){
+        System.out.println("===== Extrato ======");
+        for(int i=0; i<movimentacoes.size(); i++) {
+            System.out.println(movimentacoes.get(i));
+        }
+        System.out.println("Saldo = " + this.saldo);
+   }
+    }
